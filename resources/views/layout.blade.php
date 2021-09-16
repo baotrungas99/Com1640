@@ -100,7 +100,7 @@
           </button>
                     <!-- LOGO -->
                     <!-- TEXT BASED LOGO -->
-                    <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>University of Greenwich</span></a>
+                    <a class="navbar-brand" href="{{url('/homepage')}}"><i class="fa fa-university"></i><span>University of Greenwich</span></a>
                     <!-- IMG BASED LOGO  -->
                     <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
                 </div>
@@ -116,13 +116,13 @@
                                 <li><a href="idea.html">Event Management</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{url('/dashboard')}}">Dashboard</a></li>
                         <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <span class="fa fa-angle-down"></span></a>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Sign in <span class="fa fa-angle-down"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{url('/login')}}">Login</a></li>
-                                <!-- <li><a href="signup.html">Logout</a></li> -->
+                                <li><a href="{{url('/logout')}}">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

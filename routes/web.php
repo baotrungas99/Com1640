@@ -13,14 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //home
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/Homepage', 'HomeController@index');
 
+//login-logout
+Route::get('/login', 'LoginController@login');
+route::get('/logout', 'LoginController@login');
 
-//login
-Route::get('/login', function(){
-    return view('login');
-});
-
-
+//admin
+Route::get('/dashboard', 'LoginController@dashboard');

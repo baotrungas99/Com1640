@@ -4,14 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
-    public function login(){
-        return view('login');
-    }
-    public function logout(){
-
-    }
     public function dashboard(){
         return view('admin.dashboard');
     }
