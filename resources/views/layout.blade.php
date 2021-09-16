@@ -116,7 +116,7 @@
                                 <li><a href="idea.html">Event Management</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{url('/dashboard')}}">Dashboard</a></li>
+                        <li><a href="{{url('/show-dashboard')}}">Dashboard</a></li>
                         <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">Sign in <span class="fa fa-angle-down"></span></a>

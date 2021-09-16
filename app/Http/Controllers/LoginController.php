@@ -12,7 +12,7 @@ class LoginController extends Controller
     public function logout(){
 
     }
-    public function dashboard(){
+    public function show_dashboard(){
         return view('admin.dashboard');
     }
 }

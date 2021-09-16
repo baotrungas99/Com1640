@@ -10,10 +10,20 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    
-
 
     use HasApiTokens, HasFactory, Notifiable;
+
+    public $timestamps = false; //set time to false
+
+    protected $primaryKey = 'id';
+    protected $table = 'users';
+
+    public function roles(){
+        return $this->belongsToMany('App\Models\Roles');
+    }
+     public function getAuthPassword(){
+        return $this->password;
+     }
 
     /**
      * The attributes that are mass assignable.
@@ -21,9 +31,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'email', 'email_verified_at','password','remember_token','created_at','updated_at'
     ];
 
     /**

@@ -20,5 +20,8 @@ Route::get('/Homepage', 'HomeController@index');
 Route::get('/login', 'LoginController@login');
 route::get('/logout', 'LoginController@login');
 
-//admin
-Route::get('/dashboard', 'LoginController@dashboard');
+//user-login
+Route::post('/dashboard', 'UserController@dashboard');
+
+// dashboard-login
+Route::get('/show-dashboard', 'LoginController@show_dashboard');
