@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
 
+    <link href="{{asset('resources/css/style.css')}}" rel="stylesheet" type="text/css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
@@ -153,7 +154,7 @@
                 <div class="col-md-12">
                     <div class="mu-course-content-area">
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-sm-9 padding-left"> 
                                 <!-- start course content container -->
                                 @yield('content')
                                 <!-- end course content container -->
@@ -325,6 +326,12 @@
     <script src="{{asset('public/backend/ck/ckeditor/ckeditor.js')}}"></script>
     <!-- Custom js -->
     <script src="{{asset('public/frontend/assets/js/custom.js')}}"></script>
+    <!-- Page level plugins -->
+    <script src="{{asset('public/backend/vendor/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('public/backend/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('public/backend/js/demo/chart-pie-demo.js')}}"></script>
     <script type="text/javascript">
     function ChangeToSlug()
     {

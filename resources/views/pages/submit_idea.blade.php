@@ -16,6 +16,7 @@
     <div class="col-md-12">
         <div id="respond">
                 <form id="commentform" action="{{url('/insert-idea')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <p class="comment-notes">
                         Your email address will not be published. Required fields are marked <span class="required">*</span>
                     </p>
@@ -24,8 +25,9 @@
                         <input type="text" required="required"  value="" name="idea_author">
                     </p>
                     <p class="comment-form-email">
-                        <label for="email">Author Email <span class="required">*</span></label>
-                        <input type="email" required="required" aria-required="true" value="" name="idea_email">
+                    <?php $email = Auth::user()->email;
+                                 ?>
+                        <input type="hidden" required="required" aria-required="true"  value="{{$email}}" name="idea_email">
                     </p>
                         <div class="form-group">
                             <label for="exampleInputPassword1">category Ideas</label>

@@ -14,12 +14,14 @@ class IdeasController extends Controller
     public function insert_idea(request $request){
         $data = $request->all();
         $idea = new Ideas();
+        // dd($data);
         $idea->idea_article = $data['idea_article'];
         $idea->idea_slug = $data['idea_slug'];
         $idea->idea_desc = $data['idea_desc'];
         $idea->idea_author = $data['idea_author'];
         $idea->idea_author_email = $data['idea_email'];
         // $idea->idea_document = $data['idea_doc'];
+        // $idea->created_at = $data['idea_article'];
         $idea->post_as = $data['post_as'];
         $idea->category_id = $data['category_id'];
         $get_file = $request->file('idea_doc');
@@ -36,6 +38,5 @@ class IdeasController extends Controller
             $idea->save();
             return redirect()->back()->with('message', 'upload idea successfully');
         }
-        // $idea->created_at = $data['idea_article'];
     }
 }
