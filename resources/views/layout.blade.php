@@ -107,23 +107,22 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
                         <li class="active"><a href="index.html">Home</a></li>
-                        <li class="dropdown">
-                            <a href="idea.html" class="dropdown-toggle" data-toggle="dropdown">Department <span class="fa fa-angle-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="idea.html">Information Technology</a></li>
-                                <li><a href="idea.html">Business Management</a></li>
-                                <li><a href="idea.html">Graphic Design</a></li>
-                                <li><a href="idea.html">Event Management</a></li>
-                            </ul>
-                        </li>
+
+                        @if( Auth::user())
                         <li><a href="{{url('/show-dashboard')}}">Dashboard</a></li>
+                        @endif
                         <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
+
+                                @if( Auth::user())
+                                <li><a href="{{url('/logout')}}">Logout</a></li>
+                                @else
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">Sign in <span class="fa fa-angle-down"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{url('/login')}}">Login</a></li>
-                                <li><a href="{{url('/logout')}}">Logout</a></li>
+                                <li><a href="#">Sign up</a></li>
                             </ul>
+                            @endif
                         </li>
                     </ul>
                 </div>
@@ -147,9 +146,95 @@
             </div>
         </div>
     </div>
+    <!-- End breadcrumb -->
+    <section id="mu-course-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-course-content-area">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <!-- start course content container -->
+                                @yield('content')
+                                <!-- end course content container -->
+                                <!-- start course pagination -->
+
+                                <!-- end course pagination -->
+                            </div>
+                            <div class="col-md-3">
+                                <!-- start sidebar -->
+                                <aside class="mu-sidebar">
+                                    <!-- start single sidebar -->
+                                    <div class="mu-single-sidebar">
+                                        <h3>Departments</h3>
+                                        <ul class="mu-sidebar-catg">
+                                        @foreach($category as $key => $cate)
+                                            <li><a href="#">{{$cate->category_idea_name}}</a></li>
+
+                                        @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="mu-single-sidebar">
+                                        <h3>Add the idea</h3>
+                                        <ul class="mu-sidebar-catg">
+                                            <li><a href="{{url('/submit-idea')}}">Submit new idea here</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- end single sidebar -->
+                                    <!-- start single sidebar -->
+                                    <div class="mu-single-sidebar">
+                                        <h3>Popular idea</h3>
+                                        <div class="mu-sidebar-popular-courses">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a href="#">
+                                                        <img class="media-object" src="assets/img/courses/1.jpg" alt="img">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="#">Medical Science</a></h4>
+                                                    <span class="popular-course-price">$200.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a href="#">
+                                                        <img class="media-object" src="assets/img/courses/2.jpg" alt="img">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="#">Web Design</a></h4>
+                                                    <span class="popular-course-price">$250.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <a href="#">
+                                                        <img class="media-object" src="assets/img/courses/3.jpg" alt="img">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="#">Health & Sports</a></h4>
+                                                    <span class="popular-course-price">$90.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end single sidebar -->
+                                    <!-- start single sidebar -->
 
 
-    @yield('content')
+                                </aside>
+                                <!-- / end sidebar -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 
 
@@ -236,11 +321,42 @@
     <script type="text/javascript" src="{{asset('public/frontend/assets/js/jquery.mixitup.js')}}"></script>
     <!-- Add fancyBox -->
     <script type="text/javascript" src="{{asset('public/frontend/assets/js/jquery.fancybox.pack.js')}}"></script>
-
-
+    <!-- ck editor -->
+    <script src="{{asset('public/backend/ck/ckeditor/ckeditor.js')}}"></script>
     <!-- Custom js -->
     <script src="{{asset('public/frontend/assets/js/custom.js')}}"></script>
-
+    <script type="text/javascript">
+    function ChangeToSlug()
+    {
+        var slug;
+        //Lấy text từ thẻ input title
+        slug = document.getElementById("slug").value;
+        slug = slug.toLowerCase();
+        //Đổi ký tự có dấu thành không dấu
+            slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+            slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+            slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+            slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+            slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+            slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+            slug = slug.replace(/đ/gi, 'd');
+            //Xóa các ký tự đặt biệt
+            slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+            //Đổi khoảng trắng thành ký tự gạch ngang
+            slug = slug.replace(/ /gi, "-");
+            //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+            //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+            slug = slug.replace(/\-\-\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-/gi, '-');
+            //Xóa các ký tự gạch ngang ở đầu và cuối
+            slug = '@' + slug + '@';
+            slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+            //In slug ra textbox có id “slug”
+        document.getElementById('convert_slug').value = slug;
+    }
+</script>
 </body>
 
 </html>

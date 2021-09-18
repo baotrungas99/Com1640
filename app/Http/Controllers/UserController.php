@@ -11,28 +11,21 @@ session_start();
 
 class UserController extends Controller
 {
+    //login user
     public function dashboard(Request $request){
-        $data = $request->validate([
-            //validation Laravel
-            'email' => 'required',
-            'password' => 'required',
+        $this->validate($request,[
+            'email'=>'required|email|max:255',
+            'password'=>'required|max:255',
         ]);
-        // dd($data);
-        $useremail = $data['email'];
-        $userpassword = md5($data['password']);
-        $login = User::where('email',$useremail)->where('password',$userpassword)->first();
-        // dd($login);
-        if($login){
-            $login_count = $login->count();
-            if ($login_count>0) {
-                Session::put('username', $login->name);
-                Session::put('userid', $login->id);
-                // return Redirect::to('/dashboard');
-                return redirect('dashboard');
-            }
-        } else{
-                return redirect('login')-with('message','Wrong username or password, please try again!');
+        if(Auth::attempt(['email'=> $request->email,'password'=>$request->password])){
+            // echo 'ok';
+            return view('admin.dashboard');
+        }else{
+            return redirect('/login')->with('message', 'Email or Password is incorrect');
         }
     }
-
+    public function logout() {
+        Auth::logout();
+        return redirect('/login')->with('message', 'Loguut successfully');
+    }
 }

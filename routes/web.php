@@ -16,12 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/Homepage', 'HomeController@index');
 
-//login-logout
+//login
 Route::get('/login', 'LoginController@login');
-route::get('/logout', 'LoginController@login');
+
 
 //user-login
 Route::post('/dashboard', 'UserController@dashboard');
-
+route::get('/logout', 'UserController@logout');
 // dashboard-login
 Route::get('/show-dashboard', 'LoginController@show_dashboard');
+//category-ideas
+Route::get('/category-ideas', 'CategoryController@category_ideas');
+Route::post('/insert-category', 'CategoryController@insert_category');
+Route::get('/list-category-ideas', 'CategoryController@list_category_ideas');
+Route::get('/delete-category-ideas/{id}', 'CategoryController@delete_category_ideas');
+
+//ideas
+
+Route::get('/submit-idea', 'IdeasController@submit_idea');
+Route::post('/insert-idea', 'IdeasController@insert_idea');

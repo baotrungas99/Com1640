@@ -42,12 +42,12 @@
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <?php
-                            $message = Session::get('message');
-                            if($message){
-                                echo '<span class="text-alert">'.$message.'</span>';
-                                Session::put('message',null);
-                            }
-                            ?>
+                                        $message = Session::get('message');
+                                        if($message){
+                                            echo '<span class="text-alert">'.$message.'</span>';
+                                            Session::put('message',null);
+                                        }
+                                    ?>
                                     <form action="{{url('/dashboard')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
@@ -66,16 +66,19 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" name="login" id="login" class="btn btn-primary btn-user btn-block">
+                                        <input type="submit" name="login" id="login" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </button>
+                                        </input>
                                         </form>
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a> -->
+                                        <a href="{{url('/Homepage')}}" class="btn btn-facebook btn-user btn-block">
+                                            <i class="btn "></i> Return Home
                                         </a>
                                     <hr>
                                     <div class="text-center">

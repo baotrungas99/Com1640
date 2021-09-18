@@ -4,29 +4,16 @@
 <section id="mu-page-breadcrumb">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="mu-page-breadcrumb-area">
                         <!-- click vo department nao no ra ten cua department do -->
-                        <h2>(Name of department)</h2>
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">(Name of department)</li>
-                        </ol>
+                        <center><h2>Ideas From All Departments</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End breadcrumb -->
-    <section id="mu-course-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="mu-course-content-area">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <!-- start course content container -->
-                                <div class="mu-course-container">
+<div class="mu-course-container">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
 
@@ -53,8 +40,6 @@
 
                                     </div>
                                 </div>
-                                <!-- end course content container -->
-                                <!-- start course pagination -->
                                 <div class="mu-pagination">
                                     <nav>
                                         <ul class="pagination">
@@ -79,78 +64,4 @@
                                     </nav>
 
                                 </div>
-                                <!-- end course pagination -->
-                            </div>
-                            <div class="col-md-3">
-                                <!-- start sidebar -->
-                                <aside class="mu-sidebar">
-                                    <!-- start single sidebar -->
-                                    <div class="mu-single-sidebar">
-                                        <h3>Departments</h3>
-                                        <ul class="mu-sidebar-catg">
-                                            <li><a href="#">Information Technology</a></li>
-                                            <li><a href="">Business Management</a></li>
-                                            <li><a href="">Graphic Design</a></li>
-                                            <li><a href="">Event Management</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="mu-single-sidebar">
-                                        <h3>Add the idea</h3>
-                                        <ul class="mu-sidebar-catg">
-                                            <li><a href="submit.html">Submit new idea here</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- end single sidebar -->
-                                    <!-- start single sidebar -->
-                                    <div class="mu-single-sidebar">
-                                        <h3>Popular idea</h3>
-                                        <div class="mu-sidebar-popular-courses">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="assets/img/courses/1.jpg" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">Medical Science</a></h4>
-                                                    <span class="popular-course-price">$200.00</span>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="assets/img/courses/2.jpg" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">Web Design</a></h4>
-                                                    <span class="popular-course-price">$250.00</span>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="assets/img/courses/3.jpg" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">Health & Sports</a></h4>
-                                                    <span class="popular-course-price">$90.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end single sidebar -->
-                                    <!-- start single sidebar -->
-
-
-                                </aside>
-                                <!-- / end sidebar -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection
