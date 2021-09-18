@@ -154,13 +154,10 @@
                 <div class="col-md-12">
                     <div class="mu-course-content-area">
                         <div class="row">
-                            <div class="col-sm-9 padding-left"> 
-                                <!-- start course content container -->
-                                @yield('content')
-                                <!-- end course content container -->
-                                <!-- start course pagination -->
+                            <div class="col-sm-9 padding-left">
 
-                                <!-- end course pagination -->
+                                @yield('content')
+
                             </div>
                             <div class="col-md-3">
                                 <!-- start sidebar -->
@@ -175,12 +172,14 @@
                                         @endforeach
                                         </ul>
                                     </div>
+                                    @if(Auth::user())
                                     <div class="mu-single-sidebar">
                                         <h3>Add the idea</h3>
                                         <ul class="mu-sidebar-catg">
                                             <li><a href="{{url('/submit-idea')}}">Submit new idea here</a></li>
                                         </ul>
                                     </div>
+                                    @endif
                                     <!-- end single sidebar -->
                                     <!-- start single sidebar -->
                                     <div class="mu-single-sidebar">
@@ -301,7 +300,7 @@
         <div class="mu-footer-bottom">
             <div class="container">
                 <div class="mu-footer-bottom-area">
-                    <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
+                    <p>&copy; All Right Reserved. Designed by <a href="" rel="nofollow">MarkUps.io</a></p>
                 </div>
             </div>
         </div>

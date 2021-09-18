@@ -14,13 +14,12 @@
             </div>
         </div>
     </section>
+
 <div class="mu-course-container">
-    @foreach ($ideas as $key =>$idea)
-                                    <div class="row">
-                                        <div class="col-sm-5">
-
+                                    <div class="g-grid">
+                                    @foreach ($ideas as $key =>$idea)
+                                        <div class="col-sm-12 g-grid-col">
                                             <div class="mu-latest-course-single">
-
                                                 <figure class="mu-latest-course-img">
                                                     <a href="#"><img src="{{asset('public/frontend/assets/img/courses/1.jpg')}}" alt="img"></a>
                                                     <figcaption class="mu-latest-course-imgcaption">
@@ -36,14 +35,13 @@
                                                         <span class="mu-course-price" href="#">{{$idea->created_at}}</span>
                                                     </div>
                                                 </div>
-                                               
                                             </div>
                                         </div>
-
+                                        @endforeach
                                     </div>
-                                    @endforeach
                                 </div>
-                                <footer class="panel-footer">
+
+    <footer class="panel-footer">
       <div class="row">
         <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">

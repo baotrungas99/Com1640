@@ -3,3 +3,14 @@
         overflow: hidden;
         vertical-align: middle;
     }
+    
+    .g-grid {
+        display: grid;
+        /* W(adjusted) = W(individual) - (1rem * 1/2) */
+        grid-template-columns: calc(50% - (30px * 1/2)) calc(50% - (30px * 1/2));
+        grid-column-gap: 30px;
+    }
+    
+    .g-grid-col {
+        padding: 30px;
+    }
