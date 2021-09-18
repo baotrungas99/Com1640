@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ideas extends Model
 {
-    use HasFactory;
+    public $timestamps = true; //set time to false
+	protected $fillable = [
+	        'idea_article', 'idea_slug','idea_desc','idea_author','idea_author_email','idea_document','post_as','category_id','created_at'
+	    ];
+	protected $primaryKey = 'idea_id';
+	protected $table = 'tbl_ideas';
 }
