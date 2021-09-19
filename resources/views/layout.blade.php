@@ -167,7 +167,7 @@
                                         <h3>Departments</h3>
                                         <ul class="mu-sidebar-catg">
                                         @foreach($category as $key => $cate)
-                                            <li><a href="#">{{$cate->category_idea_name}}</a></li>
+                                            <li><a href="{{url('/show-by-category/'. $cate->category_idea_slug)}}">{{$cate->category_idea_name}}</a></li>
 
                                         @endforeach
                                         </ul>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 //home
 Route::get('/', 'HomeController@index');
 Route::get('/Homepage', 'HomeController@index');
-
+Route::get('/show-by-category/{slug}', 'HomeController@show_by_category');
 //login
 Route::get('/login', 'LoginController@login');
 
