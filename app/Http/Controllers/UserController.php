@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Category_ideas;
 use App\Models\User;
 use Session;
 use Auth; //Using Auth
@@ -19,7 +20,8 @@ class UserController extends Controller
         ]);
         if(Auth::attempt(['email'=> $request->email,'password'=>$request->password])){
             // echo 'ok';
-            return view('admin.dashboard');
+            $category = Category_ideas::orderBy('category_id', 'desc')->get();
+            return view('admin.dashboard')->with(compact('category'));
         }else{
             return redirect('/login')->with('message', 'Email or Password is incorrect');
         }

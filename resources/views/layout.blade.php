@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=csrf-token content="{{csrf_token()}}">
     <title>Home</title>
 
     <link href="{{asset('resources/css/style.css')}}" rel="stylesheet" type="text/css">
@@ -101,13 +102,13 @@
           </button>
                     <!-- LOGO -->
                     <!-- TEXT BASED LOGO -->
-                    <a class="navbar-brand" href="{{url('/homepage')}}"><i class="fa fa-university"></i><span>University of Greenwich</span></a>
+                    <a class="navbar-brand" href="{{url('/Homepage')}}"><i class="fa fa-university"></i><span>University of Greenwich</span></a>
                     <!-- IMG BASED LOGO  -->
                     <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="{{url('/Homepage')}}">Home</a></li>
 
                         @if( Auth::user())
                         <li><a href="{{url('/show-dashboard')}}">Dashboard</a></li>
@@ -188,34 +189,12 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" src="assets/img/courses/1.jpg" alt="img">
+                                                        <img class="media-object" src="{{asset('public/frontend/assets/img/courses/1.jpg')}}" alt="img">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
                                                     <h4 class="media-heading"><a href="#">Medical Science</a></h4>
                                                     <span class="popular-course-price">$200.00</span>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="assets/img/courses/2.jpg" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">Web Design</a></h4>
-                                                    <span class="popular-course-price">$250.00</span>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <a href="#">
-                                                        <img class="media-object" src="assets/img/courses/3.jpg" alt="img">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><a href="#">Health & Sports</a></h4>
-                                                    <span class="popular-course-price">$90.00</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,6 +342,7 @@
         document.getElementById('convert_slug').value = slug;
     }
 </script>
+
 </body>
 
 </html>

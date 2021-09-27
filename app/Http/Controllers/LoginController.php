@@ -11,6 +11,8 @@ use Symfony\Contracts\Service\Attribute\Required; //
 use App\Providers\RouteServiceProvider; //
 // use AuthenticatesUsers;
 use Auth;
+use App\Models\Category_ideas;
+use DB;
 class LoginController extends Controller
 {
      //
@@ -24,6 +26,8 @@ class LoginController extends Controller
     //     return redirect()->to($destination); //
     // }
     public function show_dashboard(){
-        return view('admin.dashboard');
+        $category = Category_ideas::orderBy('category_id', 'desc')->get();
+
+        return view('admin.dashboard')->with(compact('category'));
     }
 }

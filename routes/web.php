@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/Homepage', 'HomeController@index');
 Route::get('/show-by-category/{slug}', 'HomeController@show_by_category');
+Route::get('/detail-idea/{idea_slug}', 'HomeController@detail_idea');
+// Route::post('ajaxLike', 'IdeasController@ajaxLike')->name('ajaxLike');
 //login
 Route::get('/login', 'LoginController@login');
 
@@ -35,3 +37,9 @@ Route::get('/delete-category-ideas/{id}', 'CategoryController@delete_category_id
 
 Route::get('/submit-idea', 'IdeasController@submit_idea');
 Route::post('/insert-idea', 'IdeasController@insert_idea');
+
+Route::post('/thumb-idea', 'IdeasController@thumb_idea');
+
+Route::get('/review-ideas-by-deparment/{slug}', 'IdeasController@review_ideas_by_deparment');
+//comment
+Route::post('/add-comment', 'IdeasController@add_comment');

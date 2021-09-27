@@ -29,9 +29,9 @@
                                                 </figure>
                                                 <div class="mu-latest-course-single-content">
                                                     <h4><a href="#">{{$idea->idea_article}}</a></h4>
-                                                    <p>{!! $idea->idea_desc !!}</p>
+                                                    <p>{!! $idea->idea_sum !!}</p>
                                                     <div class="mu-latest-course-single-contbottom">
-                                                        <a class="mu-course-details" href="#">Details</a>
+                                                        <a class="mu-course-details" href="{{url('/detail-idea/'.$idea->idea_slug)}}">Details</a>
                                                         <span class="mu-course-price" href="#">{{$idea->created_at}}</span>
                                                     </div>
                                                 </div>

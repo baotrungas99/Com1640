@@ -30,7 +30,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/show-dashboard')}}">
 
                 <div class="sidebar-brand-text mx-3"> Admin Page <sup></sup></div>
             </a>
@@ -40,7 +40,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{url('/show-dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -57,7 +57,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Idea</span>
+                    <span>Custom Deparments</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -65,6 +65,20 @@
                         <a class="collapse-item" href="{{url('/category-ideas')}}">Add Category Ideas</a>
                         <a class="collapse-item" href="{{url('/list-category-ideas')}}">Manage category</a>
 
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Review ideas by Deparments</span>
+                </a>
+                <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Review ideas by Deparments:</h6>
+                        @foreach($category as $key => $cat)
+                        <a class="collapse-item" href="{{url('/review-ideas-by-deparment/'.$cat->category_idea_slug)}}">{{$cat->category_idea_name}}</a>
+                        @endforeach
                     </div>
                 </div>
             </li>
@@ -84,7 +98,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
             <a href="{{url('/Homepage')}}" class >
-                <button class="btn btn-primary" id="">Return Home</button>
+              <center>  <button class="btn btn-primary" id="">Return Home</button>
             </a>
             <!-- Sidebar Message -->
 

@@ -29,9 +29,9 @@
                                                 </figure>
                                                 <div class="mu-latest-course-single-content">
                                                     <h4><a href="#">{{$cate_by_slug->idea_article}}</a></h4>
-                                                    <p>{!! $cate_by_slug->idea_desc !!}</p>
+                                                    <p>{!! $cate_by_slug->idea_sum !!}</p>
                                                     <div class="mu-latest-course-single-contbottom">
-                                                        <a class="mu-course-details" href="#">Details</a>
+                                                        <a class="mu-course-details" href="{{url('/detail-idea/'.$cate_by_slug->idea_slug)}}">Details</a>
                                                         <span class="mu-course-price" href="#">{{$cate_by_slug->created_at}}</span>
                                                     </div>
                                                 </div>

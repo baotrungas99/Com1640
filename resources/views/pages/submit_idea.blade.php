@@ -53,6 +53,10 @@
                         <input type="text" required="required"id="convert_slug" aria-required="true" name="idea_slug" >
                     </p>
                     <p class="comment-form-comment">
+                        <label for="comment">Summary</label>
+                        <textarea class="ckeditor form-control" required="required" aria-required="true" rows="8" cols="45" name="idea_sum"></textarea>
+                    </p>
+                    <p class="comment-form-comment">
                         <label for="comment">Description</label>
                         <textarea class="ckeditor form-control" required="required" aria-required="true" rows="8" cols="45" name="idea_desc"></textarea>
                     </p>
