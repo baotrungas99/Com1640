@@ -52,7 +52,35 @@
             <div class="sidebar-heading">
                 Interface
             </div>
-
+            @hasrole(['users'])
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Submit new Ideas</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Ideas:</h6>
+                        <a class="collapse-item" href="{{url('/submit-idea')}}">submit here</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Review your submition ideas</span>
+                </a>
+                <!-- <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Review ideas by Deparments:</h6>
+                        @foreach($category as $key => $cat)
+                        <a class="collapse-item" href="{{url('/review-ideas-by-deparment/'.$cat->category_idea_slug)}}">{{$cat->category_idea_name}}</a>
+                        @endforeach
+                    </div>
+                </div> -->
+            </li>
+            @endhasrole
+            @hasrole(['QA manager'])
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -82,7 +110,7 @@
                     </div>
                 </div>
             </li>
-
+            @endhasrole
 
 
             <!-- Divider -->

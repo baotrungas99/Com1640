@@ -174,11 +174,39 @@
                                         </ul>
                                     </div>
                                     @if(Auth::user())
-                                    <div class="mu-single-sidebar">
+                                    <div class="mu-single-sidebar" >
+                                        <div style="color:red;">
+                                         <!-- giờ phút giây tháng ngày năm -->
+                                    <?php $target = mktime (0, 0, 0, 10, 21, 2021); $today = time (); $unequal = ($target - $today); $date = (int) ($unequal/ 86400);
+                                    if($date>0){
+                                        print "The submit of ideas will be close in ".$date." days";
+                                    }else{
+                                        $date = (int) ($unequal/ 3600);
+                                        if($date>0){
+                                            print "The submit of ideas will be close in ".$date." hours";
+                                        }else{
+                                            $date = (int) ($unequal/ 60);
+                                            if($date>0){
+                                                print "The submit of ideas will be close in ".$date." Minutes";
+                                            }else{
+                                                if($unequal<0){
+                                                    print "Time out for submit ideas";
+                                                }else{
+                                                    print "The submit of ideas will be close in ".$unequal." seconds";
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                        </div>
+                                    @if($unequal>0)
                                         <h3>Add the idea</h3>
                                         <ul class="mu-sidebar-catg">
                                             <li><a href="{{url('/submit-idea')}}">Submit new idea here</a></li>
                                         </ul>
+                                    @else
+                                    <h3>Time out to submit new idea, please wait until Manager turn it on</h3>
+                                    @endif
                                     </div>
                                     @endif
                                     <!-- end single sidebar -->

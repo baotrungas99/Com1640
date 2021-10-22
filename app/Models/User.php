@@ -24,7 +24,13 @@ class User extends Authenticatable
     }
      public function getAuthPassword(){
         return $this->password;
-     }
+    }
+    public function hasAnyRoles($roles){
+        return null !== $this->roles()->whereIn('name', $roles)->first();
+    }
+    public function hasRole($role){
+        return null !== $this->roles()->whereIn('name', $role)->first();
+    }
 
     /**
      * The attributes that are mass assignable.

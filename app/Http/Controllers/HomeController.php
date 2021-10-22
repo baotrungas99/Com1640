@@ -11,12 +11,15 @@ use DB;
 use Overtrue;
 use Auth;
 use Session;
+// use Carbon\Carbon;
 class HomeController extends Controller
 {
     public function index(){
         $category = Category_ideas::orderBy('category_id', 'desc')->get();
         $ideas = Ideas::orderby('idea_id',"desc")->Paginate(5);
         // dd($category);
+        // $today = Carbon::now();
+        // dd($today);
         return view('pages.home')->with(compact('category','ideas'));
     }
     public function show_by_category(Request $request,$slug){

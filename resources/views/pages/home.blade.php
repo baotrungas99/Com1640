@@ -24,7 +24,14 @@
                                                     <a href="#"><img src="{{asset('public/frontend/assets/img/courses/1.jpg')}}" alt="img"></a>
                                                     <figcaption class="mu-latest-course-imgcaption">
                                                         <a href="#">Drawing</a>
-                                                        <span><i class="fa fa-clock-o"></i>90Days</span>
+                                                        <span><i class="fa fa-clock-o"></i>
+                                                            <?php
+                                                                // $datesubmit = ($today - $idea->created_at);
+                                                                // $dateupdate = (int) ($datesubmit/ 86400);
+                                                                // print $dateupdate;
+                                                            ?>
+
+                                                        </span>
                                                     </figcaption>
                                                 </figure>
                                                 <div class="mu-latest-course-single-content">
