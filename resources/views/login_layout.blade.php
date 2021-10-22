@@ -80,7 +80,7 @@
                 </div> -->
             </li>
             @endhasrole
-            @hasrole(['QA manager'])
+            @hasrole(['QA manager','admin'])
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">

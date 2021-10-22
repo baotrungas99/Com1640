@@ -177,7 +177,7 @@
                                     <div class="mu-single-sidebar" >
                                         <div style="color:red;">
                                          <!-- giờ phút giây tháng ngày năm -->
-                                    <?php $target = mktime (0, 0, 0, 10, 21, 2021); $today = time (); $unequal = ($target - $today); $date = (int) ($unequal/ 86400);
+                                    <?php $target = mktime (0, 0, 0, 10, 23, 2021); $today = time (); $unequal = ($target - $today); $date = (int) ($unequal/ 86400);
                                     if($date>0){
                                         print "The submit of ideas will be close in ".$date." days";
                                     }else{
