@@ -43,3 +43,12 @@ Route::post('/thumb-idea', 'IdeasController@thumb_idea');
 Route::get('/review-ideas-by-deparment/{slug}', 'IdeasController@review_ideas_by_deparment');
 //comment
 Route::post('/add-comment', 'IdeasController@add_comment');
+
+//like
+// Route::get('/like/{user_id}','HomeController@like');
+// Route::get('/dislike/{user_id}','HomeController@disLike');
+Route::post('ajaxLike', 'HomeController@ajaxLike')->name('ajaxLike');
+
+//topic and deadline
+Route::get('/topic-ideas', 'IdeasController@add_topic');
+Route::post('/insert-topic', 'IdeasController@insert_topic');

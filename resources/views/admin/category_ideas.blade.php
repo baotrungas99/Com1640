@@ -32,7 +32,14 @@
                                     </textarea>
                                 </div>
 
-
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Topic Ideas</label>
+                                        <select name="topic_id" class="form-control input-sm m-bot15">
+                                            @foreach($topic as $key => $top)
+                                                <option value="{{$top->topic_id}}">{{$top->topic_name}}</option>
+                                            @endforeach
+                                        </select>
+                                </div>
                                 <button type="submit" name="add_category" class="btn btn-info">Add</button>
                             </form>
                             </div>

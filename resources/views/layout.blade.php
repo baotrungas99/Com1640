@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name=csrf-token content="{{csrf_token()}}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -165,7 +166,7 @@
                                 <aside class="mu-sidebar">
                                     <!-- start single sidebar -->
                                     <div class="mu-single-sidebar">
-                                        <h3>Departments</h3>
+                                        <h3>All Topic Departments</h3>
                                         <ul class="mu-sidebar-catg">
                                         @foreach($category as $key => $cate)
                                             <li><a href="{{url('/show-by-category/'. $cate->category_idea_slug)}}">{{$cate->category_idea_name}}</a></li>
@@ -173,42 +174,67 @@
                                         @endforeach
                                         </ul>
                                     </div>
-                                    @if(Auth::user())
-                                    <div class="mu-single-sidebar" >
+                                @if(Auth::user())
+                                    @foreach($topic as $key => $topic)
+                                    <div class="mu-single-sidebar timer" >
                                         <div style="color:red;">
-                                         <!-- giờ phút giây tháng ngày năm -->
-                                    <?php $target = mktime (0, 0, 0, 10, 23, 2021); $today = time (); $unequal = ($target - $today); $date = (int) ($unequal/ 86400);
-                                    if($date>0){
-                                        print "The submit of ideas will be close in ".$date." days";
-                                    }else{
-                                        $date = (int) ($unequal/ 3600);
-                                        if($date>0){
-                                            print "The submit of ideas will be close in ".$date." hours";
-                                        }else{
-                                            $date = (int) ($unequal/ 60);
-                                            if($date>0){
-                                                print "The submit of ideas will be close in ".$date." Minutes";
-                                            }else{
-                                                if($unequal<0){
-                                                    print "Time out for submit ideas";
-                                                }else{
-                                                    print "The submit of ideas will be close in ".$unequal." seconds";
+
+                                            <!-- <input type="hidden" data-id_ideas="{{$topic->topic_id}}"  class="clock" value="{{ $topic->due_date}}"> -->
+
+                                            <lable>Due Date for topic {{$topic->topic_name}}:</lable>
+                                            <!-- <p id="countdown"></p> -->
+
+                                            <script>
+                                                    function createCountDown(elementId, date) {
+                                                    // Set the date we're counting down to
+                                                    var countDownDate = new Date(date).getTime();
+
+                                                    // Update the count down every 1 second
+                                                    var x = setInterval(function() {
+
+                                                    // Get todays date and time
+                                                    var now = new Date().getTime();
+
+                                                    // Find the distance between now an the count down date
+                                                    var distance = countDownDate - now;
+
+                                                    // Time calculations for days, hours, minutes and seconds
+                                                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                                    // Display the result in the element with id="demo"
+                                                    document.getElementById(elementId).innerHTML = days + "d " + hours + "h "
+                                                    + minutes + "m " + seconds + "s ";
+
+                                                    // If the count down is finished, write some text
+                                                    if (distance < 0) {
+                                                        clearInterval(x);
+                                                        document.getElementById(elementId).innerHTML = "TIME TO SUBMIT THIS TOPIC IS EXPIRED";
+                                                        var submitidea = document.getElementById("id_{{$topic->topic_id}}");
+                                                        submitidea.remove(); //time out
+                                                    }
+                                                    }, 1000);
                                                 }
-                                            }
-                                        }
-                                    }
-                                    ?>
+                                                createCountDown('{{$topic->topic_id}}', "{{ $topic->due_date}}")
+                                                </script>
+                                                <p id="{{$topic->topic_id}}"></p>
                                         </div>
-                                    @if($unequal>0)
-                                        <h3>Add the idea</h3>
-                                        <ul class="mu-sidebar-catg">
-                                            <li><a href="{{url('/submit-idea')}}">Submit new idea here</a></li>
-                                        </ul>
-                                    @else
-                                    <h3>Time out to submit new idea, please wait until Manager turn it on</h3>
-                                    @endif
+                                        <div id='id_{{$topic->topic_id}}'>
+                                            <h3>Add the idea</h3>
+                                            <ul class="mu-sidebar-catg">
+                                                <li><a href="{{url('/submit-idea')}}">Submit new idea here</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    @endif
+                                    @endforeach
+                                @endif
+                                <!-- <p id="demo5"></p>
+                                <p id="demo8"></p>
+                                <p id="demo10"></p>
+                                <p id="demo430"></p> -->
+
                                     <!-- end single sidebar -->
                                     <!-- start single sidebar -->
                                     <div class="mu-single-sidebar">
@@ -370,7 +396,102 @@
         document.getElementById('convert_slug').value = slug;
     }
 </script>
+<script>
+$(document).ready(function(){
+   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+   $(".likePost").click(function(){
+      $.ajax({
+         url: '{{route('ajaxLike')}}',
+         type: 'POST',
+         data: {
+            _token: CSRF_TOKEN,
+            id: $(this).data("like"),
+         },
+         dataType: 'JSON',
+         success: function() {
+            location.reload();
+         }
+      });
+   });
+});
+</script>
+<!-- <script>
+        var id = $('.clock').data('id_ideas');
+        // alert(id);
+        // var cd = $('.cd').val();
+        var count = $('.clock').val();
+        // alert(count);
+        // alert(cd);
+// alert (count);
+// Set the date we're counting down to
+var countDownDate = new Date(count).getTime();
 
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+    var submitidea = document.getElementById("submitidea");
+    submitidea.remove(); //time out
+  }
+}, 1000);
+</script>
+<script>
+    function createCountDown(elementId, date) {
+	// Set the date we're counting down to
+	var countDownDate = new Date(date).getTime();
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+	  // Get todays date and time
+	  var now = new Date().getTime();
+
+	  // Find the distance between now an the count down date
+	  var distance = countDownDate - now;
+
+	  // Time calculations for days, hours, minutes and seconds
+	  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	  // Display the result in the element with id="demo"
+	  document.getElementById(elementId).innerHTML = days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
+
+	  // If the count down is finished, write some text
+	  if (distance < 0) {
+		clearInterval(x);
+		document.getElementById(elementId).innerHTML = "ORDER EXPIRED";
+	  }
+	}, 1000);
+}
+
+createCountDown('demo5', "2022-07-26 18:00:00")
+createCountDown('demo8', "2022-07-27 14:00:00")
+createCountDown('demo10', "2022-07-27 10:04:30")
+createCountDown('demo430', "2022-07-28 20:10:50")
+
+</script> -->
 </body>
 
 </html>

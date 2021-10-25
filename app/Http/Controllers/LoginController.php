@@ -27,7 +27,7 @@ class LoginController extends Controller
     // }
     public function show_dashboard(){
         $category = Category_ideas::orderBy('category_id', 'desc')->get();
-
+        
         return view('admin.dashboard')->with(compact('category'));
     }
 }

@@ -20,52 +20,38 @@
                                                     <a href="#">{{$value->created_at}}</a>
                                                     <span><i class="fa fa-comments-o"></i>
                                                     {{$count_commnet}}
-                                                </span>
+                                                    </span>
+
                                                 </div>
+
                                                 <div class="mu-blog-description">
                                                     <p>{!!$value->idea_desc!!}</p>
                                                 </div>
                                                 <!-- start blog post tags -->
                                                 <div class="mu-blog-tags">
                                                     <ul class="mu-news-single-tagnav">
-                                                        <li>Documentation :</li>
+                                                        <li>Documentation:</li>
                                                         <li><a href="#">{{$value->idea_document}}</a></li>
-                                                        <li>porpulate :</li>
-                                                        <li><a href="#">{{$count_thumb_up - $count_thumb_down}}</a></li>
+                                                        <li>porpulate:</li>
+
+                                                       <?php $likes = $value->likers()->count(); print($likes."  "); ?>
+
+                                                       <span>
+                                                        @if($value->likers()->get()->count() == 0)
+                                                            <a class="fa fa-thumbs-o-up likePost" aria-hidden="true" data-like="{{$value->idea_id}}"></a>
+                                                                {{__('Like')}}
+                                                        @else
+                                                            <a class="fa fa-thumbs-o-down likePost" aria-hidden="true" data-like="{{$value->idea_id}}"></a>
+                                                                {{__('DisLike')}}
+                                                        @endif
+                                                    </span>
                                                     </ul>
                                                 </div>
                                                 <!-- End blog post tags -->
                                                 <!-- start blog social share -->
 
-                                                @foreach ($thumb as $th)
-                                                @if($th)
-                                                    @if(Auth::user()->id == $th->user_id)
-                                                        @if($th->thumb_status==0)
-                                                            You had already liked this idea
-                                                        @else
-                                                            You had already disliked this idea
-                                                        @endif
-                                                    @endif
-                                                @else
-                                                <div class="mu-blog-social">
-                                                    <ul class="mu-news-social-nav">
-                                                  <li> <form action="{{('/thumb-idea')}}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
-                                                            <input type="hidden" name="idea_slug" value="{{$value->idea_slug}}"/>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Like</label>
-                                                            <select name="thumb" class="form-control input-sm m-bot15">
-                                                                    <option class="fa fa-thumbs-up"  value="0"> Like</option>
-                                                                    <option class="fa fa-thumbs-down" value="1"> Dislike</option>
-                                                            </select>
-                                                    </div>
-                                                    <input type="submit" name="submit_thumb" class="btn btn-primary" >
-                                                    </form></li>
-                                                    </ul>
-                                                </div>
-                                                @endif
-                                                @endforeach
+
+
                                                 <!--  -->
                                                 <!-- End blog social share -->
                                             </article>

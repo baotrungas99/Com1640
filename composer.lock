@@ -2044,16 +2044,16 @@
         },
         {
             "name": "overtrue/laravel-like",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-like.git",
-                "reference": "08d87b630cfd82d5f29b9af037f5be5a4d83fa46"
+                "reference": "1f15c7c9f379b55118a25ac9086a45a232cd4ef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-like/zipball/08d87b630cfd82d5f29b9af037f5be5a4d83fa46",
-                "reference": "08d87b630cfd82d5f29b9af037f5be5a4d83fa46",
+                "url": "https://api.github.com/repos/overtrue/laravel-like/zipball/1f15c7c9f379b55118a25ac9086a45a232cd4ef9",
+                "reference": "1f15c7c9f379b55118a25ac9086a45a232cd4ef9",
                 "shasum": ""
             },
             "require": {
@@ -2061,7 +2061,7 @@
             },
             "require-dev": {
                 "brainmaestro/composer-git-hooks": "^2.7",
-                "friendsofphp/php-cs-fixer": "^2.17.2",
+                "friendsofphp/php-cs-fixer": "^3.0.0",
                 "laravel/framework": "^8.0",
                 "mockery/mockery": "^1.2",
                 "orchestra/testbench": "^6.7.0",
@@ -2100,9 +2100,9 @@
             "description": "👍 User-like features for Laravel Application.",
             "support": {
                 "issues": "https://github.com/overtrue/laravel-like/issues",
-                "source": "https://github.com/overtrue/laravel-like/tree/4.0.0"
+                "source": "https://github.com/overtrue/laravel-like/tree/4.0.1"
             },
-            "time": "2020-12-23T01:09:01+00:00"
+            "time": "2021-10-18T15:15:30+00:00"
         },
         {
             "name": "phpoption/phpoption",

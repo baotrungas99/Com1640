@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Overtrue\LaravelLike\Traits\Liker;
 
+
 class User extends Authenticatable
 {
 
@@ -38,7 +39,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'email_verified_at','password','remember_token','created_at','updated_at'
+        'name', 'email', 'email_verified_at','password','remember_token','created_at','updated_at', 'like_stattus'
     ];
 
     /**

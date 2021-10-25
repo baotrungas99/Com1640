@@ -14,4 +14,7 @@ class Ideas extends Model
 	    ];
 	protected $primaryKey = 'idea_id';
 	protected $table = 'tbl_ideas';
+
+
 }
+

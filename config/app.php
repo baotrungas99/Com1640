@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         Overtrue\LaravelFollow\FollowServiceProvider::class,//like dislike provider
+        Overtrue\LaravelLike\LikeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,7 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Overtrue' =>Overtrue\LaravelFollow\FollowServiceProvider::class,
+       
     ],
 
 ];

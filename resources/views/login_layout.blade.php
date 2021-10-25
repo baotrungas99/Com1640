@@ -80,6 +80,7 @@
                 </div> -->
             </li>
             @endhasrole
+            @hasrole(['QA manager','admin','QA'])
             @hasrole(['QA manager','admin'])
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -96,6 +97,7 @@
                     </div>
                 </div>
             </li>
+            @endhasrole
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -111,8 +113,20 @@
                 </div>
             </li>
             @endhasrole
-
-
+            @hasrole(['admin'])
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Create Topic and Deadline</span>
+                </a>
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Create Topic and Deadline:</h6>
+                        <a class="collapse-item" href="{{url('/topic-ideas')}}">Add Topic and Deadline</a>
+                    </div>
+                </div>
+            </li>
+            @endhasrole
             <!-- Divider -->
 
             <!-- Heading -->

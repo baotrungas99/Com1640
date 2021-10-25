@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category_ideas;
 use App\Models\Ideas;
 use App\Models\Comment;
-use App\Models\thumb;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -13,8 +13,9 @@ use sessions;
 class IdeasController extends Controller
 {
     public function submit_idea(){
+        $topic = Topic::all();
         $category = Category_ideas::orderBy('category_id', 'desc')->get();
-        return view('pages.submit_idea')->with(compact('category'));
+        return view('pages.submit_idea')->with(compact('category','topic'));
     }
     public function insert_idea(request $request){
         $data = $request->all();
@@ -72,17 +73,21 @@ class IdeasController extends Controller
 
         return view('admin.review_idea_by_deparment')->with(compact('category','category_by_slug','category_name'));
     }
-    public function thumb_idea(request $request){
+    //Admin function
+    public function add_topic(){
+        $category = Category_ideas::orderBy('category_id', 'desc')->get();
 
+        return view('admin.add_topic',compact('category'));
+    }
+    public function insert_topic(request $request){
         $data = $request->all();
         // dd($data);
-        $thumb = new thumb();
-        $thumb->user_id = $data['user_id'];
-        $thumb->idea_slug = $data['idea_slug'];
-        $thumb->thumb_status = $data['thumb'];
-        $thumb->save();
+        $topic = new Topic();
+        $topic->topic_name = $data['topic_name'];
+        $topic->topic_slug = $data['topic_slug'];
+        $topic->due_date = $data['due_date'];
+        $topic->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Insert topic successfully');
     }
-
 }

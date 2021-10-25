@@ -27,17 +27,19 @@
             <th>Name</th>
             <th>slug</th>
             <th>Description</th>
+            <th>Belong to Topic</th>
 
 
           </tr>
         </thead>
         <tbody>
-            @foreach($category as $key => $val)
+            @foreach($catebelongtopic as $key => $val)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{$val->category_idea_name}}</td>
             <td>{{$val->category_idea_slug}}</td>
             <td>{{$val->category_idea_desc}}</td>
+            <td>{{$val->topic_name}}</td>
             <td><span class="text-ellipsis">
 
             </span></td>
