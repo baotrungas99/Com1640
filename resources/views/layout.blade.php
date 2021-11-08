@@ -492,6 +492,24 @@ createCountDown('demo10', "2022-07-27 10:04:30")
 createCountDown('demo430', "2022-07-28 20:10:50")
 
 </script> -->
+<script type="text/javascript">
+    $(document).ready(function(){
+           $('.submitidea').click(function(){
+               var email = $('.idea_email').val();
+               var author = $('.idea_author').val();
+            // elert(email);
+                        $.ajax({
+                         url:'{{url('/send-mail')}}',
+                            method:'GET',
+                            data:{email:email,author:author},
+                            success:function(){
+                                location.reload();
+                            }
+                        });
+                    });
+                });
+
+</script>
 </body>
 
 </html>

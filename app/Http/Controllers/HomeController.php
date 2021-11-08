@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Category_ideas;
 use App\Models\Ideas;
+use Mail;
 use App\Models\LikeDislike;
 use App\Models\Comment;
 use App\Models\User;
@@ -72,6 +73,20 @@ class HomeController extends Controller
 
         return response()->json(['success' => $response]);
      }
+     public function send_mail(request $request) {
+         //send mail
+         $to_name = $request->idea_author;
+         $to_email = $request->idea_email;//send to this email
+         // $ftotal = $request->session_cart_id;
 
+         $data = array("name"=>"notification: there is new idea add","body"=>'notification: 1 new idea'); //body of mail.blade.php
 
+         Mail::send('pages.send_mail', $data, function ($message) use ($to_name, $to_email) {
+             $message->to($to_email)->subject('Test thử gửi mail google');//send this mail with subject
+            $message->from($to_email, $to_name);//send from this mail
+         });
+         // return redirect('/')->with('message','');
+         //--send mail
+         return redirect()->back();
+     }
 }

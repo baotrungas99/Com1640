@@ -52,3 +52,5 @@ Route::post('ajaxLike', 'HomeController@ajaxLike')->name('ajaxLike');
 //topic and deadline
 Route::get('/topic-ideas', 'IdeasController@add_topic');
 Route::post('/insert-topic', 'IdeasController@insert_topic');
+//send mail
+Route::get('/send-mail','HomeController@send_mail');

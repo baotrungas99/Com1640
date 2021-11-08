@@ -22,12 +22,12 @@
                     </p>
                     <p class="comment-form-author">
                         <label for="author">Author <span class="required">*</span></label>
-                        <input type="text" required="required"  value="" name="idea_author">
+                        <input type="text" required="required"  value="" name="idea_author" class="idea_author">
                     </p>
                     <p class="comment-form-email">
                     <?php $email = Auth::user()->email;
                                  ?>
-                        <input type="hidden" required="required" aria-required="true"  value="{{$email}}" name="idea_email">
+                        <input type="hidden" required="required" class="idea_email" aria-required="true"  value="{{$email}}" name="idea_email">
                     </p>
                         <div class="form-group">
                             <label for="exampleInputPassword1">category Ideas</label>
@@ -69,7 +69,7 @@
                         <input type="radio" required="required" aria-required="true" value="0" name="yes" id="y"> Yes <br></label>
                     </p>
                     <p class="form-submit">
-                        <input type="submit" value="Submit" class="mu-post-btn" name="submit">
+                        <input type="submit" value="Submit" class="mu-post-btn submitidea" name="submit">
                     </p>
                 </form>
             </div>
