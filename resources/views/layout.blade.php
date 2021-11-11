@@ -266,11 +266,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
     <!-- Start footer -->
     <footer id="mu-footer">
         <!-- start footer top -->
@@ -293,7 +288,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="mu-footer-widget">
-                                <h4>Student Help</h4>
+                                <h4>Help</h4>
                                 <ul>
                                     <li><a href="">Get Started</a></li>
                                     <li><a href="#">My Questions</a></li>
@@ -317,10 +312,10 @@
                             <div class="mu-footer-widget">
                                 <h4>Contact</h4>
                                 <address>
-                  <p>P.O. Box 320, Ross, California 9495, USA</p>
-                  <p>Phone: (415) 453-1568 </p>
-                  <p>Website: www.markups.io</p>
-                  <p>Email: info@markups.io</p>
+                  <p>Greenwich VN</p>
+                  <p>Phone:  </p>
+                  <p>Website: </p>
+                  <p>Email: group8@gmaill.com</p>
                 </address>
                             </div>
                         </div>
@@ -333,7 +328,7 @@
         <div class="mu-footer-bottom">
             <div class="container">
                 <div class="mu-footer-bottom-area">
-                    <p>&copy; All Right Reserved. Designed by <a href="" rel="nofollow">MarkUps.io</a></p>
+                    <p>&copy; All Right Reserved. Designed by Nguyen Tran Tan - Group 8 - COMP1640</p>
                 </div>
             </div>
         </div>
@@ -364,6 +359,8 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('public/backend/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('public/backend/js/demo/chart-pie-demo.js')}}"></script>
+
+
     <script type="text/javascript">
     function ChangeToSlug()
     {
@@ -395,121 +392,44 @@
             //In slug ra textbox có id “slug”
         document.getElementById('convert_slug').value = slug;
     }
-</script>
-<script>
-$(document).ready(function(){
-   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-   $(".likePost").click(function(){
-      $.ajax({
-         url: '{{route('ajaxLike')}}',
-         type: 'POST',
-         data: {
-            _token: CSRF_TOKEN,
-            id: $(this).data("like"),
-         },
-         dataType: 'JSON',
-         success: function() {
-            location.reload();
-         }
-      });
-   });
-});
-</script>
-<!-- <script>
-        var id = $('.clock').data('id_ideas');
-        // alert(id);
-        // var cd = $('.cd').val();
-        var count = $('.clock').val();
-        // alert(count);
-        // alert(cd);
-// alert (count);
-// Set the date we're counting down to
-var countDownDate = new Date(count).getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Output the result in an element with id="demo"
-  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is over, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
-    var submitidea = document.getElementById("submitidea");
-    submitidea.remove(); //time out
-  }
-}, 1000);
-</script>
-<script>
-    function createCountDown(elementId, date) {
-	// Set the date we're counting down to
-	var countDownDate = new Date(date).getTime();
-
-	// Update the count down every 1 second
-	var x = setInterval(function() {
-
-	  // Get todays date and time
-	  var now = new Date().getTime();
-
-	  // Find the distance between now an the count down date
-	  var distance = countDownDate - now;
-
-	  // Time calculations for days, hours, minutes and seconds
-	  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-	  // Display the result in the element with id="demo"
-	  document.getElementById(elementId).innerHTML = days + "d " + hours + "h "
-	  + minutes + "m " + seconds + "s ";
-
-	  // If the count down is finished, write some text
-	  if (distance < 0) {
-		clearInterval(x);
-		document.getElementById(elementId).innerHTML = "ORDER EXPIRED";
-	  }
-	}, 1000);
-}
-
-createCountDown('demo5', "2022-07-26 18:00:00")
-createCountDown('demo8', "2022-07-27 14:00:00")
-createCountDown('demo10', "2022-07-27 10:04:30")
-createCountDown('demo430', "2022-07-28 20:10:50")
-
-</script> -->
-<script type="text/javascript">
-    $(document).ready(function(){
-           $('.submitidea').click(function(){
-               var email = $('.idea_email').val();
-               var author = $('.idea_author').val();
-            // elert(email);
-                        $.ajax({
-                         url:'{{url('/send-mail')}}',
-                            method:'GET',
-                            data:{email:email,author:author},
-                            success:function(){
-                                location.reload();
-                            }
+    </script>
+    <script>
+        $(document).ready(function(){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(".likePost").click(function(){
+            $.ajax({
+                url: '{{route('ajaxLike')}}',
+                type: 'POST',
+                data: {
+                    _token: CSRF_TOKEN,
+                    id: $(this).data("like"),
+                },
+                dataType: 'JSON',
+                success: function() {
+                    location.reload();
+                }
+            });
+        });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.submitidea').click(function(){
+                var email = $('.idea_email').val();
+                var author = $('.idea_author').val();
+                // elert(email);
+                            $.ajax({
+                            url:'{{url('/send-mail')}}',
+                                method:'GET',
+                                data:{email:email,author:author},
+                                success:function(){
+                                    location.reload();
+                                }
+                            });
                         });
                     });
-                });
 
-</script>
+    </script>
 </body>
 
 </html>
